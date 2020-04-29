@@ -17,27 +17,14 @@ export default function productReducer(state = initialState, action) {
         case PRODUCT.DELETE:
             return Object.assign({}, state, {
                 isFetching: true,
-                product: action.product,
+                deletedProduct: action.deletedProduct,
                 deleted: false
             });
         case PRODUCT.DELETE_DONE:
             return Object.assign({}, state, {
-                product: {},
+                deletedProduct: {},
                 deleted: true,
                 isFetching: false,
-            });
-        case PRODUCT.FETCH_ALL:
-            return Object.assign({}, state, {
-                isFetching: true,
-                products: [],
-                product: {},
-                deleted: false,
-                saved: false
-            });
-        case PRODUCT.DONE:
-            return Object.assign({}, state, {
-                isFetching: false,
-                products: action.products,
             });
         case PRODUCT.FETCH_PRODUCT:
             return Object.assign({}, state, {
@@ -60,6 +47,11 @@ export default function productReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 openAlert: action.openAlert,
                 alertData: action.alertData
+            });
+        case PRODUCT.SET_ERROR:
+            return Object.assign({}, state, {
+                isError: action.status,
+                isFetching: false,
             });
         default:
             return state;

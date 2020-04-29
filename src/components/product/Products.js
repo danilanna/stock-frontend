@@ -1,7 +1,7 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import {useHistory} from "react-router-dom";
-import {deleteProduct, loadProducts, openCloseDialog} from "../../redux/actions/productActions";
+import {deleteProduct, openCloseDialog, openCloseAlert} from "../../redux/actions/productActions";
 import {connect} from "react-redux";
 import AlertDialog from "../common/AlertDialog";
 import ProductApi from "../../redux/api/productApi";
@@ -26,10 +26,12 @@ function Products(props) {
     }
 
     function edit(id) {
+        props.openCloseAlert(false, {});
         history.push(`/products/${id}`)
     }
 
     function add() {
+        props.openCloseAlert(false, {});
         history.push(`/products/new`)
     }
 
@@ -78,7 +80,13 @@ function Products(props) {
                     }
 
                 }}
-                data={query => ProductApi.getAllProducts(query)}
+                data={query => ProductApi.getAllProducts(query)
+                    .catch(() => {
+                        const error = {
+                            message: "Ocorreu um erro ao buscar os produtos. Tente novamente mais tarde."
+                        };
+                        props.openCloseAlert(true, error);
+                    })}
             />
         </div>
     );
@@ -87,8 +95,8 @@ function Products(props) {
 const mapDispatchToProps = dispatch => {
     return {
         deleteProduct: (product) => dispatch(deleteProduct(product)),
-        loadProducts: (name) => dispatch(loadProducts(name)),
         openCloseDialog: (open, data) => dispatch(openCloseDialog(open, data)),
+        openCloseAlert: (open, data) => dispatch(openCloseAlert(open, data)),
     }
 };
 

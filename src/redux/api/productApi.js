@@ -1,33 +1,42 @@
 const host = process.env.REACT_APP_HOST;
 const path = '/product';
-const basePath = host+path;
+const basePath = host + path;
 
 export default class ProductApi {
     static getAllProducts(query) {
         return new Promise((resolve, reject) => {
-            let url = host+path+'?';
+            let url = host + path + '?';
             url += 'size=' + query.pageSize;
             url += '&page=' + (query.page);
             url += '&sort=name,' + (query.orderDirection ? query.orderDirection : "asc");
             url += '&name=' + (query.search);
             fetch(url)
-                .then(response => response.json())
-                .then(result => {
-                    resolve({
-                        data: result.content,
-                        page: result.number,
-                        totalCount: result.totalElements,
-                    })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Something went wrong');
+                    }
+                }).then(result => {
+                resolve({
+                    data: result.content,
+                    page: result.number,
+                    totalCount: result.totalElements,
                 })
-        })
+            }).catch(() => reject())
+        });
     }
 
     static getProductById(id) {
-        const url = basePath +'/' + id;
+        const url = basePath + '/' + id;
         return fetch(url).then(response => {
-            return response.json();
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Something went wrong');
+            }
         }).catch(error => {
-            return error;
+            throw error;
         });
     }
 
@@ -39,9 +48,15 @@ export default class ProductApi {
             },
             body: JSON.stringify(product),
         })
-            .then((response) => response.json())
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong');
+                }
+            })
             .catch((error) => {
-                console.error('Error:', error);
+                throw error;
             });
     }
 
@@ -52,9 +67,15 @@ export default class ProductApi {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(product),
+        }).then((response) => {
+            if (response.ok) {
+                return response.ok;
+            } else {
+                throw new Error('Something went wrong');
+            }
         })
             .catch((error) => {
-                console.error('Error:', error);
+                throw error;
             });
     }
 }

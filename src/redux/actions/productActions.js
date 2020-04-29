@@ -1,13 +1,5 @@
-import { PRODUCT } from './actionTypes';
+import {PRODUCT} from './actionTypes';
 import ProductApi from "../api/productApi";
-
-function loadProductsSuccess(products) {
-    return {type: PRODUCT.DONE, products: products};
-}
-
-function loadingProducts() {
-    return {type: PRODUCT.FETCH_ALL};
-}
 
 function loadProductSuccess() {
     return {type: PRODUCT.FETCH_PRODUCT};
@@ -29,8 +21,8 @@ function removed() {
     return {type: PRODUCT.DELETE_DONE};
 }
 
-function remove(product) {
-    return {type: PRODUCT.DELETE, product: product};
+function remove(deletedProduct) {
+    return {type: PRODUCT.DELETE, deletedProduct: deletedProduct};
 }
 
 export function reset() {
@@ -45,15 +37,8 @@ export function openCloseAlert(open, data) {
     return {type: PRODUCT.OPEN_ALERT, openAlert: open, alertData: data};
 }
 
-export function loadProducts(name) {
-    return dispatch => {
-        dispatch(loadingProducts());
-        return ProductApi.getAllProducts(name).then(products => {
-            dispatch(loadProductsSuccess(products));
-        }).catch(error => {
-            throw(error);
-        });
-    };
+export function setError(status) {
+    return {type: PRODUCT.SET_ERROR, status: status};
 }
 
 export function loadProductById(id) {
@@ -61,8 +46,12 @@ export function loadProductById(id) {
         dispatch(loadProductSuccess());
         return ProductApi.getProductById(id).then(product => {
             dispatch(loadingProduct(product));
-        }).catch(error => {
-            throw(error);
+        }).catch(() => {
+            const error = {
+                message: "Ocorreu um erro ao buscar o produto. Tente novamente mais tarde."
+            };
+            dispatch(setError(true));
+            dispatch(openCloseAlert(true, error));
         });
     };
 }
@@ -74,8 +63,12 @@ export function saveProduct(product) {
             const message = `Produto ${product.name} salvo com sucesso!`;
             dispatch(saved(product));
             dispatch(openCloseAlert(true, {message}));
-        }).catch(error => {
-            throw(error);
+        }).catch(() => {
+            const error = {
+                message: "Ocorreu um erro ao salvar o produto. Tente novamente mais tarde."
+            };
+            dispatch(setError(true));
+            dispatch(openCloseAlert(true, error));
         });
     };
 }
@@ -87,8 +80,12 @@ export function deleteProduct(product) {
             const message = `Produto ${product.name} removido com sucesso!`;
             dispatch(removed());
             dispatch(openCloseAlert(true, {message}));
-        }).catch(error => {
-            throw(error);
+        }).catch(() => {
+            const error = {
+                message: "Ocorreu um erro ao deletar o produto. Tente novamente mais tarde."
+            };
+            dispatch(setError(true));
+            dispatch(openCloseAlert(true, error));
         });
     };
 }

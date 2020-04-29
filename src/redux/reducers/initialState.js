@@ -1,6 +1,7 @@
 export default {
     products: [],
     product: {},
+    deletedProduct: {},
     isFetching: false,
     saved: false,
     deleted: false,
@@ -8,5 +9,6 @@ export default {
     openDialog: false,
     dialogData: {},
     showAlert: false,
-    alertData: {}
+    alertData: {},
+    isError: false,
 }
