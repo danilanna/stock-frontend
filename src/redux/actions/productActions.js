@@ -1,4 +1,4 @@
-import {PRODUCT} from './actionTypes';
+import {PRODUCT} from './productActionTypes';
 import ProductApi from "../api/productApi";
 
 function loadProductSuccess() {

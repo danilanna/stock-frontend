@@ -1,5 +1,5 @@
-import { PRODUCT } from '../actions/actionTypes';
-import initialState from './initialState';
+import { PRODUCT } from '../actions/productActionTypes';
+import initialState from './initialStateProduct';
 
 export default function productReducer(state = initialState, action) {
     switch(action.type) {

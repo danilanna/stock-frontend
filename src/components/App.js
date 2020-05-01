@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./home/Home";
 import ProductsPage from "./product/ProductsPage";
 import Product from "./product/Product";
-import Stocks from "./stock/Stocks";
+import StocksPage from "./stock/StocksPage";
 import Stock from "./stock/Stock";
 import configureStore from '../redux/store/configureStore';
 import {makeStyles, useTheme} from "@material-ui/core/styles";
@@ -74,7 +74,7 @@ function App() {
                                                 <Product/>
                                             </Route>
                                             <Route exact path="/stocks">
-                                                <Stocks/>
+                                                <StocksPage/>
                                             </Route>
                                             <Route path="/stocks/:id">
                                                 <Stock/>

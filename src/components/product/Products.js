@@ -9,7 +9,7 @@ import ProductApi from "../../redux/api/productApi";
 function Products(props) {
 
     const columns = [
-            {title: 'Name', field: 'name'},
+            {title: 'Nome', field: 'name'},
         ],
         history = useHistory();
 
