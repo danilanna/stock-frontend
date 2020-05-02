@@ -7,6 +7,7 @@ import ProductsPage from "./product/ProductsPage";
 import Product from "./product/Product";
 import StocksPage from "./stock/StocksPage";
 import Stock from "./stock/Stock";
+import BalancePage from "./balance/BalancePage";
 import configureStore from '../redux/store/configureStore';
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 import Box from '@material-ui/core/Box';
@@ -78,6 +79,9 @@ function App() {
                                             </Route>
                                             <Route path="/stocks/:id">
                                                 <Stock/>
+                                            </Route>
+                                            <Route exact path="/balance">
+                                                <BalancePage/>
                                             </Route>
                                         </Switch>
                                     </main>

@@ -1,0 +1,8 @@
+export const BALANCE = {
+    FETCH: 'FETCH',
+    FETCH_DONE: 'FETCH_DONE',
+    OPEN_ALERT: 'OPEN_ALERT',
+    SET_ERROR: 'SET_ERROR',
+    SET_START: 'SET_START',
+    SET_END: 'SET_END',
+};

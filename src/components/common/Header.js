@@ -12,6 +12,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
+import TrendingUp from '@material-ui/icons/TrendingUp';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { Link as RouterLink } from 'react-router-dom';
@@ -40,6 +41,10 @@ function Header(props) {
                 <ListItem button key={"Estoque"} component={RouterLink} to={"/stocks"}>
                     <ListItemIcon><StoreIcon/></ListItemIcon>
                     <ListItemText primary={"Estoque"} />
+                </ListItem>
+                <ListItem button key={"Balanço"} component={RouterLink} to={"/balance"}>
+                    <ListItemIcon><TrendingUp/></ListItemIcon>
+                    <ListItemText primary={"Balanço do estoque"} />
                 </ListItem>
             </List>
         </div>

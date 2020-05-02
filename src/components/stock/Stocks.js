@@ -10,7 +10,7 @@ function Stocks(props) {
 
     const columns = [
             {title: 'Quantidade', field: 'quantity'},
-            {title: 'Preço R$', field: 'price'},
+            {title: 'Valor', field: 'price'},
             {title: 'Produto', field: 'product.name'},
             {title: 'Data de Cadastro', field: 'entryDate'},
             {title: 'Tipo', field: 'type'},

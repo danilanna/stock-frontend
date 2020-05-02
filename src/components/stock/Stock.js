@@ -125,10 +125,6 @@ function Stock(props) {
         props.setQuantity(value.target.value);
     };
 
-    if (stock) {
-        console.log(stock.entryDate);
-    }
-
     if (isFetching || isFetchingProducts) {
         return (<div>Loading...</div>)
     } else {
@@ -197,7 +193,7 @@ function Stock(props) {
                                     fullWidth
                                     required
                                     variant="outlined"
-                                    label="Preço"
+                                    label="Valor"
                                     value={stock.price}
                                     name="price"
                                     id="price"
