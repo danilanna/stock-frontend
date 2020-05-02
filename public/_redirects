@@ -1,5 +1,6 @@
 /products  /products
 /products/  /products/
+/products/:id  /products/:id
 /stocks  /stocks
 /stocks/  /stocks/
 /balance  /balance
@@ -7,4 +8,5 @@
 /clients/  /clients/
 /sales  /sales
 /sales/  /sales/
-/clients/*  /clients/:id
+/clients/*  /clients/*
+/stocks  /
