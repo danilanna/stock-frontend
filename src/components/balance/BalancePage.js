@@ -117,9 +117,39 @@ function Balances(props) {
         return (
             <div>
                 <div className={classes.paper}>
-
                     <Typography component="h1" variant="h4">
                         Balanço do estoque - Total
+                    </Typography>
+                    <div className={classes.container}>
+                        <Grid container spacing={3}>
+                            {
+                                balance.completeBalances.map(value => {
+                                    return (
+                                        <Grid item xs={12} sm key={value.productName + "balance"}>
+                                            <Card className={classes.root}>
+                                                <CardContent>
+                                                    <Typography component="h1" variant="h5" color="textSecondary"
+                                                                gutterBottom>
+                                                        {value.productName}
+                                                    </Typography>
+                                                    <Typography variant="h5" component="h2">
+                                                        Quantidate: {value.quantityTotal}
+                                                    </Typography>
+                                                    <Typography variant="h5" component="h2">
+                                                        Valor: {value.priceTotal}
+                                                    </Typography>
+                                                </CardContent>
+                                            </Card>
+                                        </Grid>
+                                    )
+                                })
+                            }
+                        </Grid>
+                    </div>
+                </div>
+                <div className={classes.paper}>
+                    <Typography component="h1" variant="h4">
+                        Balanço do estoque - Filtrado pela data
                     </Typography>
                     <div className={classes.container}>
                         <Grid container spacing={3}>
@@ -151,7 +181,7 @@ function Balances(props) {
                 <Divider className={classes.divider}/>
                 <div className={classes.paper}>
                     <Typography component="h1" variant="h4">
-                        Balanço do estoque - Entradas
+                        Balanço do estoque - Entradas - Filtrado pela data
                     </Typography>
                     <div className={classes.container}>
                         <Grid container spacing={3}>
@@ -183,7 +213,7 @@ function Balances(props) {
                 <Divider className={classes.divider}/>
                 <div className={classes.paper}>
                     <Typography component="h1" variant="h4">
-                        Balanço do estoque - Saidas
+                        Balanço do estoque - Saidas - Filtrado pela data
                     </Typography>
                     <div className={classes.container}>
                         <Grid container spacing={3}>

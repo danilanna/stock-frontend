@@ -1,5 +1,5 @@
 export default {
-    balance: {balances: [], ins: [], outs: []},
+    balance: {balances: [], ins: [], outs: [], completeBalances: []},
     isFetching: false,
     alertData: {},
     isError: false,

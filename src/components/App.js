@@ -14,6 +14,8 @@ import Box from '@material-ui/core/Box';
 import Grid from "@material-ui/core/Grid";
 import ClientsPage from "./client/ClientsPage";
 import Client from "./client/Client";
+import SalesPage from "./sale/SalesPage";
+import Sale from "./sale/Sale";
 
 const store = configureStore();
 
@@ -90,6 +92,12 @@ function App() {
                                             </Route>
                                             <Route path="/clients/:id">
                                                 <Client/>
+                                            </Route>
+                                            <Route exact path="/sales">
+                                                <SalesPage/>
+                                            </Route>
+                                            <Route path="/sales/:id">
+                                                <Sale/>
                                             </Route>
                                         </Switch>
                                     </main>
