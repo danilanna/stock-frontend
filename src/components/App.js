@@ -12,6 +12,8 @@ import configureStore from '../redux/store/configureStore';
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 import Box from '@material-ui/core/Box';
 import Grid from "@material-ui/core/Grid";
+import ClientsPage from "./client/ClientsPage";
+import Client from "./client/Client";
 
 const store = configureStore();
 
@@ -82,6 +84,12 @@ function App() {
                                             </Route>
                                             <Route exact path="/balance">
                                                 <BalancePage/>
+                                            </Route>
+                                            <Route exact path="/clients">
+                                                <ClientsPage/>
+                                            </Route>
+                                            <Route path="/clients/:id">
+                                                <Client/>
                                             </Route>
                                         </Switch>
                                     </main>

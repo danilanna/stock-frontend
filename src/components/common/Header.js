@@ -11,6 +11,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import {SupervisorAccount} from "@material-ui/icons";
 import MenuIcon from '@material-ui/icons/Menu';
 import TrendingUp from '@material-ui/icons/TrendingUp';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -33,6 +34,10 @@ function Header(props) {
                 <ListItem button key={"Home"} component={RouterLink} to={"/"}>
                     <ListItemIcon><HomeIcon/></ListItemIcon>
                     <ListItemText primary={"Home"} />
+                </ListItem>
+                <ListItem button key={"Cliente"} component={RouterLink} to={"/clients"}>
+                    <ListItemIcon><SupervisorAccount/></ListItemIcon>
+                    <ListItemText primary={"Cliente"} />
                 </ListItem>
                 <ListItem button key={"Produtos"} component={RouterLink} to={"/products"}>
                     <ListItemIcon><Storefront/></ListItemIcon>
