@@ -1,9 +1,9 @@
-/products  /products
-/products/  /products/
+/products  /
+/products/*  /
 /stocks  /
 /stocks/*  /
-/balance  /balance 200
-/clients  /clients 302
-/clients/  /
-/sales  /sales
-/sales/  /sales/
+/clients  /
+/clients/*  /
+/sales  /
+/sales/*  /
+/balance  /
